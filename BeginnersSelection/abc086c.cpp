@@ -8,23 +8,24 @@ int main()
 {
     int N;
     cin >> N;
-    vector<int> t(N + 1);
-    vector<int> x(N + 1);
-    vector<int> y(N + 1);
-    t.at(0) = 0;
-    x.at(0) = 0;
-    y.at(0) = 0;
-    REP(i, N) { cin >> t.at(i + 1) >> x.at(i + 1) >> y.at(i + 1); }
+    int tb = 0, xb = 0, yb = 0;
+    int tn, xn, yn;
+    int diff_t, diff;
+    string r = "Yes";
     REP(i, N)
     {
-        int diff_t = abs(t.at(i) - t.at(i + 1));
-        int diff = abs(x.at(i) - x.at(i + 1)) + abs(y.at(i) - y.at(i + 1));
+        cin >> tn >> xn >> yn;
+        if (r == "No")
+        {
+            continue;
+        }
+        diff_t = tn - tb;
+        diff = abs(xb - xn) + abs(yb - yn);
         if (!((diff_t % 2 == diff % 2) && (diff_t >= diff)))
         {
-            cout << "No" << endl;
-            return 0;
+            r = "No";
         }
     }
-    cout << "Yes" << endl;
+    cout << r << endl;
     return 0;
 }
